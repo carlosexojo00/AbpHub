@@ -13,6 +13,7 @@ export const useCurrentUser = () => {
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getCurrentUser();
@@ -22,14 +23,26 @@ export const CurrentUserProvider = ({ children }) => {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    if (!user) {
-      return;
+    if (user) {
+      console.log(user);
+      setCurrentUser(user);
     }
-    setCurrentUser(user);
+    setIsLoading(false);
   };
 
+  const clearCurrentUser = () => {
+    setCurrentUser(null);
+    console.log("User logged out");
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <CurrentUserContext.Provider value={{ currentUser, getCurrentUser }}>
+    <CurrentUserContext.Provider
+      value={{ currentUser, getCurrentUser, clearCurrentUser }}
+    >
       {children}
     </CurrentUserContext.Provider>
   );

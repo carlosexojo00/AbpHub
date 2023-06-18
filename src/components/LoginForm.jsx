@@ -2,11 +2,13 @@ import { supabase } from "../supabase/client";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 function LoginForm() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [rememberMe, setRememberMe] = useState(false);
+  const { getCurrentUser } = useCurrentUser();
 
   useEffect(() => {
     checkLocalStorage();
@@ -32,6 +34,7 @@ function LoginForm() {
       }
     } else {
       console.log(data.user.user_metadata.role);
+      getCurrentUser();
       if (data.user.user_metadata.role === "Student") {
         navigate("/studentshome");
       } else if (data.user.user_metadata.role === "Teacher") {

@@ -15,6 +15,7 @@ function EvaluationCriteriaList(props) {
       0
     );
     setTotalWeight(sumWeights);
+    console.log("sumWeights", sumWeights);
     props.upLiftTotalWeight(sumWeights);
   }, [evaluationCriteria]);
 

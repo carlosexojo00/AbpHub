@@ -7,15 +7,20 @@ import { useCurrentUser } from "../contexts/CurrentUserContext";
 function StudentsHomePage() {
   const [updateStudentsProjectsList, setUpdateStudentsProjectsList] =
     useState(false);
-  const [currentUsrName, setCurrentUsrName] = useState(""); // [1
+  const [currentUsrName, setCurrentUsrName] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const { currentUser } = useCurrentUser();
 
   useEffect(() => {
-    console.log("currentUser", currentUser);
     if (currentUser && currentUser.user_metadata) {
       setCurrentUsrName(currentUser.user_metadata.first_name);
+      setIsLoading(false);
     }
   }, [currentUser]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">

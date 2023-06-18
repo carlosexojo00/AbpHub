@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
 import { supabase } from "../supabase/client";
 import { useState, useEffect } from "react";
 import GradesTable from "../components/GradesTable";
@@ -110,6 +110,12 @@ function ProjectGradesPage() {
         <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-white mt-6">
           Nota Final: {notaProyecto}
         </h1>
+        <Link
+          to={`/studentshome`}
+          className="mx-auto px-8 py-2 bg-[#466FA6] hover:bg-[#2C4F7B] rounded font-semibold text-white md:mx-0 md:mr-auto md:mt-6"
+        >
+          Volver
+        </Link>
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ function ProjectPage() {
 
   const handleUpLiftTotalWeight = (totalWeight) => {
     setCurrentProject({ ...currentProject, totalWeight: totalWeight });
+    console.log("totalWeight", totalWeight);
   };
 
   const getCurrentProject = async () => {
@@ -86,30 +87,6 @@ function ProjectPage() {
   };
 
   return (
-    // <div>
-    //   <h1>Project Page {id}</h1>
-    //   <Link
-    //     to={`evaluate`}
-    //     state={{
-    //       students: { studentsList },
-    //       evaluationCriteria: { evaluationCriteriaList },
-    //     }}
-    //   >
-    //     Evaluar Proyecto
-    //   </Link>
-    //   <h2>Students</h2>
-    //   <ProjectStudentsList
-    //     projectId={id}
-    //     upLiftStudents={handleUpLiftStudents}
-    //   ></ProjectStudentsList>
-    //   <Link to={`evaluation-criteria/create`}>
-    //     Crear Criterios de Evaluacion
-    //   </Link>
-    //   <EvaluationCriteriaList
-    //     projectId={id}
-    //     upLiftEvaluationCriteria={handleUpLiftEvaluationCriteria}
-    //   ></EvaluationCriteriaList>
-    // </div>
     <div className="min-h-screen flex flex-col">
       <UserNavbar></UserNavbar>
       <div className="flex-grow flex flex-col items-center md:justify-center md:items-start py-12 px-4 gap-4">

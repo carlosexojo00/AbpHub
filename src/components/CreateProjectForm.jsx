@@ -3,7 +3,7 @@ import { supabase } from "../supabase/client";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import HorizontalLinearStepper from "./Stepper";
 import Alert from "./Alert";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CreateProjectForm() {
   const [project, setProject] = useState({
@@ -97,7 +97,7 @@ function CreateProjectForm() {
         <HorizontalLinearStepper></HorizontalLinearStepper>
       </div>
       <form onSubmit={handleSubmit} className="mt-8 w-full">
-        {errors.name && <Alert message={errors.name}></Alert>}
+        {errors.name && <Alert message={errors.name} color="red"></Alert>}
         <div className="flex flex-col">
           <label htmlFor="name" className="text-gray-500 font-semibold text-lg">
             Nombre del proyecto
@@ -124,7 +124,9 @@ function CreateProjectForm() {
             className="border-2 border-gray-500 p-2 h-40 mb-4"
           ></textarea>
         </div>
-        {errors.startDate && <Alert message={errors.startDate}></Alert>}
+        {errors.startDate && (
+          <Alert message={errors.startDate} color="red"></Alert>
+        )}
         <div className="flex flex-col mt-4">
           <label
             htmlFor="startDate"
@@ -140,7 +142,7 @@ function CreateProjectForm() {
             className="border-2 border-gray-500 p-2 text-gray-500 mb-4"
           ></input>
         </div>
-        {errors.endDate && <Alert message={errors.endDate}></Alert>}
+        {errors.endDate && <Alert message={errors.endDate} color="red"></Alert>}
         <div className="flex flex-col mt-4">
           <label
             htmlFor="endDate"
